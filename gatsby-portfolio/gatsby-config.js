@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Josh Doan`,
+    description: `This is my portfolio site to showcase work.`,
+    author: `@jldoan`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -25,6 +25,32 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: 'gatsby-source-wordpress',
+      options: {
+        excludedRoutes: ['/wp/v2/users/**', '/wp/v2/settings*'],
+        baseUrl: 'api.joshdoan.com',
+        protocol: 'http',
+        hostingWPCOM: false,
+        useACF: true,
+        searchAndReplaceContentUrls: {
+          sourceUrl: 'http://api.joshdoan.com',
+          replacementUrl: '',
+        },
+      },
+    },
+    'gatsby-plugin-styled-components',
+    {
+      resolve: 'gatsby-plugin-prefetch-google-fonts',
+      options: {
+        fonts: [
+          {
+            family: 'Teko',
+            variants: ['200', '400', '500', '600', '700']
+          },
+        ],
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
